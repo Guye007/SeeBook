@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.Toolbar
+        android:elevation="3dp"
+        android:background="#FFF"
+        android:id="@+id/tool_bar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:contentInsetLeft="0dp"
+        app:contentInsetStart="0dp">
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/text_select_all"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:gravity="center_vertical"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:text="@string/i_reader_all_select"
+                android:textColor="@color/textColorPrimary"
+                android:textSize="15sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center_vertical"
+                android:text="@string/i_reader_last_read"
+                android:textColor="@color/red"
+                android:textSize="17sp"/>
+
+            <TextView
+                android:id="@+id/text_complete"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="right"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:gravity="center_vertical"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:text="@string/i_reader_finish"
+                android:textColor="@color/textColorPrimary"
+                android:textSize="15sp"/>
+        </FrameLayout>
+    </android.support.v7.widget.Toolbar>
+
+    <com.gy.seebook.view.RecommendView
+        android:layout_below="@+id/tool_bar"
+        android:id="@+id/recommend_view"
+        app:MainPaddingLeft="12dp"
+        app:MainPaddingRight="12dp"
+        app:SubPaddingLeft="12dp"
+        app:SubPaddingRight="12dp"
+        app:MainClipToPadding="false"
+        app:SubClipToPadding="false"
+        app:DragInMergeScaleX="0.9"
+        app:DragInMergeScaleY="0.9"
+        app:DragScaleX="1.1"
+        app:DragScaleY="1.1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <LinearLayout
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/bottom_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFF"
+        android:elevation="3dp"
+        android:orientation="horizontal"
+        android:paddingBottom="10dp"
+        android:layout_alignParentBottom="true">
+
+        <RelativeLayout
+            android:id="@+id/container_delete"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:paddingTop="10dp"
+            android:clipToPadding="false">
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/ic_delete"
+                style="@style/RecBottomImage"
+                app:srcCompat="@drawable/ic_delete" />
+            <TextView
+                android:id="@+id/ic_delete_badge"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_alignRight="@id/ic_delete"
+                android:layout_marginRight="-8dp"
+                android:layout_marginTop="-8dp"
+                android:background="@drawable/bg_circle_red"
+                android:gravity="center"
+                android:textColor="#FFF"
+                android:textSize="10sp"
+                tools:text="1"
+                android:visibility="invisible" />
+            <TextView
+                android:id="@+id/text_delete"
+                style="@style/RecBottomText"
+                android:layout_below="@id/ic_delete"
+                android:text="@string/i_reader_delete"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/container_move"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:paddingTop="10dp"
+            android:layout_weight="1">
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/ic_move"
+                style="@style/RecBottomImage"
+                app:srcCompat="@drawable/ic_move" />
+            <TextView
+                android:id="@+id/text_move"
+                style="@style/RecBottomText"
+                android:layout_below="@id/ic_move"
+                android:text="@string/i_reader_move" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/container_share"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:paddingTop="10dp"
+            android:layout_weight="1">
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/ic_share"
+                style="@style/RecBottomImage"
+                app:srcCompat="@drawable/ic_share" />
+            <TextView
+                android:id="@+id/text_share"
+                style="@style/RecBottomText"
+                android:layout_below="@id/ic_share"
+                android:text="@string/i_reader_share" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/container_order"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:paddingTop="10dp"
+            android:layout_weight="1">
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/ic_order"
+                style="@style/RecBottomImage"
+                app:srcCompat="@drawable/ic_order" />
+            <TextView
+                android:id="@+id/text_order"
+                style="@style/RecBottomText"
+                android:layout_below="@id/ic_order"
+                android:text="@string/i_reader_book_order"
+                />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/container_detail"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:paddingTop="10dp"
+            android:layout_weight="1">
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/ic_detail"
+                style="@style/RecBottomImage"
+                app:srcCompat="@drawable/ic_detail" />
+            <TextView
+                android:id="@+id/text_detail"
+                style="@style/RecBottomText"
+                android:layout_below="@id/ic_detail"
+                android:text="@string/i_reader_detail" />
+        </RelativeLayout>
+    </LinearLayout>
+
+</RelativeLayout>

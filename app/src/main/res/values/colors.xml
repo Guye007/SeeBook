@@ -8,4 +8,16 @@
     <color name="menuUnselect">#8a8a8a</color>
 
 
+    <color name="white">#ffffff</color>
+    <!--全透明：#00000000 半透明：#80000000 不透明：#FF000000 白色半透明：#80FFFFFF 红色30%透明：#4Dca0d0d-->
+    <color name="translucent_white">#80FFFFFF</color>
+    <color name="transparent">#00000000</color>
+
+    <color name="textColorPrimary">#303030</color>
+    <color name="textColorDisable">#bbbbbb</color>
+    <color name="red">#e53935</color>
+    <color name="selector_color_text">#303030</color>
+    <color name="orange">#e76813</color>
+
+
 </resources>

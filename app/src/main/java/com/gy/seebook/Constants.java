@@ -12,4 +12,7 @@ package com.gy.seebook;
 public class Constants {
 
     public static final String API_BASE_URL = "http://api.zhuishushenqi.com";
+
+    public static boolean IS_FOLDER_ADAPTER=false;
+    public static String CLASSIFY_VIEW_INIT="CLASSIFY_VIEW_INIT";
 }

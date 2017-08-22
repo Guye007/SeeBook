@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.gy.seebook.view.RecommendFolder
+        android:id="@+id/recommend_folder"
+        android:layout_width="115dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center"
+        android:clipToPadding="false"
+        android:padding="15dp">
+        <View
+            android:id="@+id/recommend_folder_bg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#b7b7b7"
+            android:visibility="invisible" />
+
+        <com.gy.seebook.view.RecommendGridLayout
+            android:id="@+id/recommend_folder_grid"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="8dp"
+            app:recommendColumnCount="2"
+            app:recommendGap="8dp"
+            app:recommendRowCount="2">
+        </com.gy.seebook.view.RecommendGridLayout>
+
+        <FrameLayout
+            android:id="@+id/recommend_folder_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/recommend_folder_check_box"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="-8dp"
+            android:layout_marginTop="-8dp"
+            android:background="@drawable/ic_unchecked"
+            android:gravity="center"
+            android:textColor="#FFF"
+            android:textSize="12sp"
+            android:visibility="gone" />
+        <TextView
+            android:id="@+id/recommend_folder_tag"
+            android:layout_width="95dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="#878787"
+            android:gravity="center"
+            android:textColor="#FFF" />
+    </com.gy.seebook.view.RecommendFolder>
+</FrameLayout>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="RecommendGridLayout">
+        <attr name="recommendRowCount" format="integer"/>
+        <attr name="recommendColumnCount" format="integer"/>
+        <attr name="recommendGap" format="dimension"/>
+    </declare-styleable>
+</resources>

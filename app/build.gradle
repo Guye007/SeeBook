@@ -15,7 +15,6 @@ android {
         versionCode rootProject.ext.android.versionCode
         versionName rootProject.ext.android.versionName
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        vectorDrawables.useSupportLibrary = true
     }
     buildTypes {
         release {
@@ -36,10 +35,26 @@ android {
             }
         }
     }
+
+    //忽略一些错误
+    lintOptions {
+        abortOnError true
+    }
+
+    configurations.all {
+        resolutionStrategy.force 'com.google.code.findbugs:jsr305:1.3.9'
+    }
 }
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    apt rootProject.ext.dependencies["butterknife-apt"]
+    compile rootProject.ext.dependencies["avi-loading"]
     compile project(':mvp')
+
+    //banner
+    compile 'com.youth.banner:banner:1.4.9'  //最新版本
+    //仿任阅书架
+    compile 'com.github.AlphaBoom:ClassifyView:0.5.2'
 }

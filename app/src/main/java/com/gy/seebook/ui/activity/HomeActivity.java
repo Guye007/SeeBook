@@ -1,5 +1,6 @@
 package com.gy.seebook.ui.activity;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -10,6 +11,7 @@ import android.widget.Toast;
 
 import com.gy.seebook.R;
 import com.gy.seebook.ui.fragment.BookFragment;
+import com.gy.seebook.ui.fragment.BookRecommendFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,13 +41,14 @@ public class HomeActivity extends XActivity {
     }
 
     private void initFragment() {
+
+        BookRecommendFragment recommendFragment = new BookRecommendFragment();
         BookFragment bookFragment = new BookFragment();
-        BookFragment bookFragment2 = new BookFragment();
         BookFragment bookFragment3 = new BookFragment();
         BookFragment bookFragment4 = new BookFragment();
 
+        fragments.add(recommendFragment);
         fragments.add(bookFragment);
-        fragments.add(bookFragment2);
         fragments.add(bookFragment3);
         fragments.add(bookFragment4);
     }

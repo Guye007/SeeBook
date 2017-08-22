@@ -10,7 +10,7 @@
         android:layout_weight="1"/>
     <View
         android:layout_width="match_parent"
-        android:layout_height="0.5dp"
+        android:layout_height="@dimen/line_height"
         android:background="@android:color/darker_gray"/>
 
     <RadioGroup
@@ -19,48 +19,20 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <RadioButton
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:button="@null"
+            style="@style/MenuButtonStyle"
             android:drawableTop="@drawable/menu_book_select"
-            android:gravity="center"
-            android:padding="8dp"
-            android:text="书架"
-            android:textColor="@drawable/menu_color_selector"
-            android:textSize="15sp"/>
+            android:text="@string/menu_book" />
         <RadioButton
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:button="@null"
+            style="@style/MenuButtonStyle"
             android:drawableTop="@drawable/menu_community_select"
-            android:gravity="center"
-            android:padding="8dp"
-            android:text="社区"
-            android:textColor="@drawable/menu_color_selector"
-            android:textSize="15sp"/>
+            android:text="@string/menu_community" />
         <RadioButton
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:button="@null"
+            style="@style/MenuButtonStyle"
             android:drawableTop="@drawable/menu_find_select"
-            android:gravity="center"
-            android:padding="8dp"
-            android:text="发现"
-            android:textColor="@drawable/menu_color_selector"
-            android:textSize="15sp"/>
+            android:text="@string/menu_find" />
         <RadioButton
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:button="@null"
+            style="@style/MenuButtonStyle"
             android:drawableTop="@drawable/menu_more_select"
-            android:gravity="center"
-            android:padding="8dp"
-            android:text="更多"
-            android:textColor="@drawable/menu_color_selector"
-            android:textSize="15sp"/>
+            android:text="@string/menu_more" />
     </RadioGroup>
 </LinearLayout>

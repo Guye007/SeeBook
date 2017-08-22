@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        app:srcCompat="@drawable/icon_tab_back_svg"/>
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/boy_girl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/icon_menu_book_svg2"
+        android:tint="@color/white"/>
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginRight="10dp"
+        app:srcCompat="@drawable/icon_tab_search_svg"
+        android:tint="@color/white"/>
+</merge>
