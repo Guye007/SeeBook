@@ -13,4 +13,7 @@
     <dimen name="line_height">1px</dimen>
 
     <dimen name="appbar_height">240dp</dimen>
+
+    <dimen name="book_read_bottom_text">12sp</dimen>
+    <dimen name="book_read_top_text">16sp</dimen>
 </resources>

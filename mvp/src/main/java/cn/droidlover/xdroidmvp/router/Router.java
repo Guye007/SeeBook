@@ -98,6 +98,11 @@ public class Router {
         return this;
     }
 
+    public Router putBoolean(@Nullable String key, boolean value) {
+        getBundleData().putBoolean(key, value);
+        return this;
+    }
+
     public Router putParcelableArray(@Nullable String key, @Nullable Parcelable[] value) {
         getBundleData().putParcelableArray(key, value);
         return this;

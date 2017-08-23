@@ -17,15 +17,20 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.gy.seebook.R;
+import com.gy.seebook.bean.Recommend;
 import com.gy.seebook.bean.RecommendBookData;
+import com.gy.seebook.ui.activity.ReadActivity;
 import com.gy.seebook.ui.adapter.RecommendAdapter;
+import com.gy.seebook.ui.presenter.RecommendPresenter;
 import com.gy.seebook.view.RecommendView;
 
+import java.util.List;
 import java.util.Random;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import cn.droidlover.xdroidmvp.log.XLog;
 import cn.droidlover.xdroidmvp.mvp.XFragment;
 
 /**
@@ -37,7 +42,7 @@ import cn.droidlover.xdroidmvp.mvp.XFragment;
  * Date: 2017-08-21 15:45
  */
 
-public class BookRecommendFragment extends XFragment {
+public class BookRecommendFragment extends XFragment<RecommendPresenter> {
 
     @BindView(R.id.recommend_view)
     RecommendView recommendView;
@@ -85,13 +90,25 @@ public class BookRecommendFragment extends XFragment {
 
     private RecommendAdapter mAdapter;
     private Random mRandom;
+    private RecommendBookData bookData;
 
     @Override
     public void initData(Bundle savedInstanceState) {
 
+        getP().loadData("male");
         setHasOptionsMenu(true);
         mRandom = new Random(System.currentTimeMillis());
-        mAdapter = new RecommendAdapter();
+        mAdapter = new RecommendAdapter(getContext());
+
+        //跳转到阅读
+        mAdapter.setItemClickListener(new RecommendAdapter.ItemClickListener() {
+            @Override
+            public void onClick(RecommendBookData recommendBookData, int mainPosition, int subPosition) {
+                Recommend.BooksBean booksBean = recommendBookData.getBooksBean();
+                ReadActivity.startActivity(getActivity(), booksBean);
+            }
+        });
+
         mAdapter.registerObserver(new RecommendAdapter.RecommendObserver() {
 
             int count = 0;
@@ -205,8 +222,8 @@ public class BookRecommendFragment extends XFragment {
     }
 
     @Override
-    public Object newP() {
-        return null;
+    public RecommendPresenter newP() {
+        return new RecommendPresenter();
     }
 
     @Override
@@ -216,5 +233,16 @@ public class BookRecommendFragment extends XFragment {
             return true;
         }
         return super.onBackPressed();
+    }
+
+    public void showDatas(Recommend recommend) {
+
+        List<Recommend.BooksBean> books = recommend.getBooks();
+        for (Recommend.BooksBean bean: books) {
+            bookData = new RecommendBookData();
+            bookData.setCover(bean.getCover());
+            bookData.setBooksBean(bean);
+            mAdapter.addBook(bookData);
+        }
     }
 }

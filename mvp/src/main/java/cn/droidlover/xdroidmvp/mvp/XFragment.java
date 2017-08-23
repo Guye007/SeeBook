@@ -130,7 +130,8 @@ public abstract class XFragment<P extends IPresent> extends RxFragment implement
     }
 
     @Override
-    public void bindEvent() {
-
+    public void bindEvent() {}
+    public boolean onBackPressed(){
+        return false;
     }
 }

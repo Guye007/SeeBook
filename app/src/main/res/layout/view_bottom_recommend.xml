@@ -38,7 +38,7 @@
             android:id="@+id/text_delete"
             style="@style/RecBottomText"
             android:layout_below="@id/ic_delete"
-            android:text="@string/i_reader_delete"/>
+            android:text="@string/recommend_delete"/>
     </RelativeLayout>
 
     <RelativeLayout
@@ -54,7 +54,7 @@
             android:id="@+id/text_move"
             style="@style/RecBottomText"
             android:layout_below="@id/ic_move"
-            android:text="@string/i_reader_move" />
+            android:text="@string/recommend_move" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -70,7 +70,7 @@
             android:id="@+id/text_share"
             style="@style/RecBottomText"
             android:layout_below="@id/ic_share"
-            android:text="@string/i_reader_share" />
+            android:text="@string/recommend_share" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -86,7 +86,7 @@
             android:id="@+id/text_order"
             style="@style/RecBottomText"
             android:layout_below="@id/ic_order"
-            android:text="@string/i_reader_book_order"
+            android:text="@string/recommend_book_order"
             />
     </RelativeLayout>
 
@@ -103,6 +103,6 @@
             android:id="@+id/text_detail"
             style="@style/RecBottomText"
             android:layout_below="@id/ic_detail"
-            android:text="@string/i_reader_detail" />
+            android:text="@string/recommend_detail" />
     </RelativeLayout>
 </LinearLayout>

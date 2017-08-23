@@ -16,6 +16,24 @@ public class RecommendBookData {
     private boolean isChecked;
     private int color = Color.BLUE;
     private RecommendBookGroup mParent;
+    private String cover;
+    private Recommend.BooksBean booksBean;
+
+    public Recommend.BooksBean getBooksBean() {
+        return booksBean;
+    }
+
+    public void setBooksBean(Recommend.BooksBean booksBean) {
+        this.booksBean = booksBean;
+    }
+
+    public String getCover() {
+        return cover;
+    }
+
+    public void setCover(String cover) {
+        this.cover = cover;
+    }
 
     public boolean isChecked() {
         return isChecked;

@@ -2,6 +2,7 @@ package com.gy.seebook.api;
 
 import com.gy.seebook.bean.Recommend;
 
+import io.reactivex.Flowable;
 import io.reactivex.Observable;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
@@ -18,5 +19,5 @@ import retrofit2.http.Query;
 public interface SeeBookService {
 
     @GET("/book/recommend")
-    Observable<Recommend> getRecomend(@Query("gender") String gender);
+    Flowable<Recommend> getRecomendBook(@Query("gender") String gender);
 }

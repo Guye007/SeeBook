@@ -11,7 +11,7 @@
         android:layout_gravity="center"
         android:clipToPadding="false"
         android:padding="15dp">
-        <View
+        <ImageView
             android:id="@+id/recommend_folder_bg"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

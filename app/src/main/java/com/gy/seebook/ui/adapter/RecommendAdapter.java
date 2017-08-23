@@ -3,8 +3,10 @@ package com.gy.seebook.ui.adapter;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.database.Observable;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -17,16 +19,19 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.anarchy.classify.adapter.BaseMainAdapter;
 import com.anarchy.classify.adapter.BaseSubAdapter;
 import com.anarchy.classify.simple.PrimitiveSimpleAdapter;
 import com.anarchy.classify.simple.widget.InsertAbleGridView;
+import com.bumptech.glide.Glide;
 import com.gy.seebook.Constants;
 import com.gy.seebook.R;
 import com.gy.seebook.bean.RecommendBookData;
 import com.gy.seebook.bean.RecommendBookGroup;
+import com.gy.seebook.utils.glide.GlideRoundTransform;
 import com.gy.seebook.view.RecommendFolder;
 import com.gy.seebook.view.RecommendGridLayout;
 
@@ -36,7 +41,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import cn.droidlover.xdroidmvp.kit.KnifeKit;
-import cn.droidlover.xdroidmvp.log.LogFormat;
 import cn.droidlover.xdroidmvp.log.XLog;
 
 /**
@@ -52,6 +56,7 @@ public class RecommendAdapter extends PrimitiveSimpleAdapter<RecommendBookGroup,
 
     private final static String RecommendAdapterLog = "RecommendAdapterLog";
 
+    private static Context mContext;
     private List<RecommendBookData> mMockSource;
     private boolean mMockSourceChanged;
     private List<RecommendBookGroup> mLastMockGroup;
@@ -68,6 +73,10 @@ public class RecommendAdapter extends PrimitiveSimpleAdapter<RecommendBookGroup,
             mSubEditMode = false;
         }
     };
+
+    public RecommendAdapter(Context context){
+        this.mContext = context;
+    }
 
 
     public void registerObserver(RecommendObserver observer) {
@@ -586,8 +595,8 @@ public class RecommendAdapter extends PrimitiveSimpleAdapter<RecommendBookGroup,
 
     @Override
     protected void onItemClick(final ViewHolder viewHolder, int parentIndex, int index) {
+        final RecommendBookData mockData = index == -1 ? mMockSource.get(parentIndex) : ((RecommendBookGroup) mMockSource.get(parentIndex)).getChild(index);
         if (mEditMode) {
-            final RecommendBookData mockData = index == -1 ? mMockSource.get(parentIndex) : ((RecommendBookGroup) mMockSource.get(parentIndex)).getChild(index);
             if (!(mockData instanceof RecommendBookGroup)) {
                 //执行check动画
                 mockData.setChecked(!mockData.isChecked());
@@ -625,13 +634,17 @@ public class RecommendAdapter extends PrimitiveSimpleAdapter<RecommendBookGroup,
                     }
                 });
             }
+        }else {
+            if (itemClickListener != null){
+                itemClickListener.onClick(mockData, parentIndex, index);
+            }
         }
     }
 
     static class ViewHolder extends PrimitiveSimpleAdapter.ViewHolder {
 
         @BindView(R.id.recommend_folder_bg)
-        View recommendFolderBg;
+        ImageView recommendFolderBg;
         @BindView(R.id.recommend_folder_grid)
         RecommendGridLayout recommendFolderGrid;
         @BindView(R.id.recommend_folder_content)
@@ -677,8 +690,11 @@ public class RecommendAdapter extends PrimitiveSimpleAdapter<RecommendBookGroup,
             } else {
                 recommendFolderGrid.setVisibility(View.INVISIBLE);
                 recommendFolderTag.setVisibility(View.GONE);
-                recommendFolderContent.setBackgroundColor(recommendBookData.getColor());
+                recommendFolderContent.setBackgroundColor(Color.TRANSPARENT);
                 recommendFolderContent.setVisibility(View.VISIBLE);
+                String imageUrl = Constants.IMG_BASE_URL + recommendBookData.getCover();
+                Glide.with(mContext).load(imageUrl).placeholder(R.drawable.cover_default)
+                        .transform(new GlideRoundTransform(mContext)).into(recommendFolderBg);
             }
         }
     }
@@ -732,5 +748,15 @@ public class RecommendAdapter extends PrimitiveSimpleAdapter<RecommendBookGroup,
         public void onHideSubDialog() {
 
         }
+    }
+
+    private ItemClickListener itemClickListener;
+
+    public void setItemClickListener(ItemClickListener itemClickListener){
+        this.itemClickListener = itemClickListener;
+    }
+
+    public interface ItemClickListener{
+        void onClick(RecommendBookData recommendBookData,int mainPosition, int subPosition);
     }
 }

@@ -30,7 +30,7 @@
         android:textColor="#FFF"
         android:textColorHint="#d1d1d1"
         android:background="@drawable/bg_i_reader_category_edit"
-        android:hint="@string/i_reader_category_title_edit_hint"
+        android:hint="@string/recommend_category_title_edit_hint"
         android:layout_marginLeft="60dp"
         android:layout_marginRight="60dp"
         android:layout_width="match_parent"
